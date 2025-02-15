@@ -1,8 +1,15 @@
 import express, {Request, Response} from 'express';
 import {PrismaClient} from '@prisma/client';
+import cors from 'cors';
+
+
 
 const app = express();
 const client = new PrismaClient();
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 
 app.get('/', (req: Request, res: Response) => {
